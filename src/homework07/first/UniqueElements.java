@@ -1,4 +1,4 @@
-package homework7.first;
+package homework07.first;
 import java.util.*;
 
 /*

@@ -1,4 +1,4 @@
-package homework7.second;
+package homework07.second;
 import java.util.*;
 
 /*

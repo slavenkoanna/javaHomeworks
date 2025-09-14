@@ -1,4 +1,4 @@
-package homework7.third;
+package homework07.third;
 
 import java.util.Arrays;
 import java.util.HashSet;
