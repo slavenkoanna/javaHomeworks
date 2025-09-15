@@ -1,6 +1,8 @@
 package homework011;
 
-public class Auto {
+import java.util.List;
+
+public class Auto implements homework011.CarsRepository {
     private String number;
     private String model;
     private String color;
@@ -38,6 +40,16 @@ public class Auto {
 
     public int getCost(){ return cost;}
     public void  setCost(int cost){ this.cost = cost;}
+
+    @Override
+    public void modelToFind(String model) {
+
+    }
+
+    @Override
+    public List<Auto> getAll() {
+        return List.of();
+    }
 
     public String toString() {
         return "Автомобиль{" +

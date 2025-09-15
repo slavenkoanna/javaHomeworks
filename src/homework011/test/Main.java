@@ -1,24 +1,40 @@
 package homework011;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Scanner;
+import homework011.Auto;
+import homework011.CarsRepository;
+
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.sql.Array;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
 
-        List<Auto> autoList = new ArrayList<>();
-        autoList.add(new Auto("a123me", "Mercedes", "White", 0, 8300000));
-        autoList.add(new Auto("b873of", "Volga", "Black", 0, 673000));
-        autoList.add(new Auto("w487mn", "Lexus", "Grey", 76000, 900000));
-        autoList.add(new Auto("p987hj", "Volga", "Red", 610, 704340));
-        autoList.add(new Auto("c987ss", "Toyota", "White", 254000, 761000));
-        autoList.add(new Auto("o983op", "Toyota", "Black", 698000, 740000));
-        autoList.add(new Auto("p146op", "BMW", "White", 271000, 850000));
-        autoList.add(new Auto("u893ii", "Toyota", "Purple", 210900, 440000));
-        autoList.add(new Auto("l097df", "Toyota", "Black", 108000, 780000));
-        autoList.add(new Auto("y876wd", "Toyota", "Black", 160000, 1000000));
+        List<homework011.Auto> autoList = new ArrayList<>();
 
+        String filePath = "src/homework011/data/cars.txt";
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] columns = line.split("\\|");
+               // System.out.println(" columns[0] = " +  columns[0] + "  columns[1] = " +  columns[1] + "  columns[2] = " +  columns[2] + " columns[3] = " +  columns[3] + "  columns[4] = " +  columns[4]);
+                autoList.add(
+                        new Auto(
+                                columns[0],
+                                columns[1],
+                                columns[2],
+                                Integer.parseInt(columns[3]),
+                                Integer.parseInt(columns[4])
+                        )
+                );
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         System.out.println("Автомобили в базе:");
         for (Auto auto : autoList) {
